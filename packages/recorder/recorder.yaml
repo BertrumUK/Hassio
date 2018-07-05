@@ -1,0 +1,45 @@
+    purge_interval: 1
+    purge_keep_days: 1
+    #db_url: !secret mysql
+    exclude:
+      entities:
+      - sensor.dns_queries_today
+      - sensor.domains_being_blocked
+      - sensor.ads_blocked_today
+      - sensor.ads_percentage_today
+      - sensor.unique_domains
+      - sensor.queries_forwarded
+      - sensor.queries_cached
+   #   - sensor.mqtt_rf_temperature
+   #   - sensor.mqtt_rf_humidity
+      - sensor.kitchen_temperature
+   #   - sensor.hallway_temperature
+   #   - sensor.hallway_humidity
+   #   - sensor.bedroom_temperature
+   #   - sensor.bedroom_humidity
+   #   - sensor.sonoff_temperature
+   #   - sensor.sonoff_humidity
+   #   - sensor.utility_room_temperature
+   #   - sensor.utility_room_humidity
+   #   - sensor.conservatory_temperature
+   #   - sensor.conservatory_humidity
+      - sensor.garage_temperature
+      - sensor.garage_humidity
+   #   - sensor.sht30_temperature
+   #   - sensor.sht30_humidity  
+      - sensor.sht30_voltage
+   #   - sensor.bme_temperature
+   #   - sensor.bme_humidity
+   #   - sensor.bme_pressure
+##### New Entries #####      
+      - sensor.efergy
+      - sensor.bme280_pir
+      - sensor.hallway_pir
+      - sensor.conservatory_pir
+      - sensor.front_door_pir
+      - sensor.utility_room_pir
+      - input_boolean.frontdoor_motion
+      - input_boolean.hallway_motion
+      - input_boolean.landing_motion
+      - input_boolean.utility_motion
+      - input_boolean.conservatory_motion

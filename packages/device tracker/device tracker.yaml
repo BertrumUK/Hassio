@@ -1,0 +1,15 @@
+###### Device Tracker #######
+
+  - platform: nmap_tracker
+    hosts: 192.168.0.1/24
+    home_interval: 10
+    track_new_devices: no
+    consider_home: 300
+  
+  - platform: bluetooth_tracker
+  
+  - platform: ping
+    interval_seconds: 60
+    consider_home: 180
+    hosts:
+      router: 192.168.0.1

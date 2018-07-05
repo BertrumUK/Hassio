@@ -1,0 +1,9 @@
+  alias: Conservatory Motion Trigger LED Off
+  trigger:
+    platform: state
+    entity_id: sensor.conservatory_pir
+    from: 'Motion Detected'
+    to: 'Standby'
+  action:
+    service: light.turn_off
+    entity_id: light.conservatory_led

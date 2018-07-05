@@ -1,0 +1,10 @@
+  alias: Set dark theme last light
+  initial_state: True
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.conservatory_ldr
+    below: 199
+  action:
+    service: frontend.set_theme
+    data:
+      name: 'darkred'

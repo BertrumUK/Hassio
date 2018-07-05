@@ -1,0 +1,12 @@
+######### Ensuite On Notification ############
+
+  alias: Notify Ensuite
+  trigger:
+    platform: state
+    entity_id: switch.sonoff1
+    to: "on"
+  action:
+    service: notify.ios_neil
+    data_template:
+      title: "Ensuite Radiator On"
+      message: "The Ensuite Radiator has been turned on"

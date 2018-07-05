@@ -1,0 +1,20 @@
+  alias: 'Utility Room Motion Detection'
+  trigger:
+    platform: state
+    entity_id: input_boolean.utility_motion
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: not_home  
+  action:
+  - service: notify.ios_neil
+    data:
+      message: 'Utility Room Motion Detected'
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Motion-Detected.wav"
+  - delay: 00:05:00
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.utility_motion

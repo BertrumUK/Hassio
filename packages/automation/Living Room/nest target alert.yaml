@@ -1,0 +1,17 @@
+  alias: nest target alert
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.hallway_thermostat_target
+    value_template: '{{ states.sensor.hallway_thermostat_target.state }}'
+    above: 19
+  condition:
+    condition: time
+    after: '05:00'
+    before: '23:00'  
+  action:
+    service: notify.ios_neil
+    data:
+      message: 'Hallway Target Alert'
+      data:
+          push:
+            sound: "US-EN-Morgan-Freeman-Vacate-The-Premises.wav"

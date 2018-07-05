@@ -1,0 +1,22 @@
+  alias: 'Front Door Motion Detection'
+  trigger:
+    platform: state
+    entity_id: input_boolean.frontdoor_motion
+    from: 'off'
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: not_home
+  action:
+    - service: notify.ios_neil
+      data:
+        message: 'Front Door Motion Detected'
+        data:
+          push:
+            sound: "US-EN-Morgan-Freeman-Motion-Detected.wav"
+        ##   - push:
+        ##       image: "http://192.168.0.24:6779/shot.jpg"
+    - delay: 00:05:00
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.frontdoor_motion

@@ -1,0 +1,13 @@
+######### Water Temperature LED on 06:00 ############
+
+alias: Water Temperature LED on 06:00
+trigger:
+  platform: time
+  at: '06:00'
+condition:
+  condition: state
+  entity_id: group.family
+  state: home
+action:
+    service: homeassistant.turn_on
+    entity_id: switch.green

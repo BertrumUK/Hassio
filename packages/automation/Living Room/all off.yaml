@@ -1,0 +1,16 @@
+  alias: "MQTT All Off"
+  initial_state: True
+  hide_entity: False
+  trigger:
+    platform: mqtt
+    topic: home/433toMQTT
+    payload: 5578552
+  action:
+  - service: homeassistant.turn_off
+    entity_id: light.led_strip
+  - service: homeassistant.turn_off
+    entity_id: switch.fireplace
+  - service: homeassistant.turn_off
+    entity_id: switch.tv
+  - service: homeassistant.turn_off
+    entity_id: switch.lights

@@ -1,0 +1,47 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 26
+  unit_system: metric
+  time_zone: Europe/London
+  customize: !include customise/customise.yaml
+updater:
+  reporting: no
+sun:
+discovery:
+ios:
+conversation:
+history:
+logbook: !include packages/logbook/logbook.yaml
+
+
+config:
+#upnp:
+camera: !include packages/camera/camera.yaml
+#android_ip_webcam: !include packages/camera/android webcam.yaml
+mqtt: !include packages/mqtt/mqtt.yaml
+emulated_hue: !include packages/hue/hue.yaml
+group: !include packages/group/group.yaml
+switch: !include packages/switch/switch.yaml
+automation: !include_dir_list packages/automation
+sensor: !include packages/sensor/sensor.yaml
+notify: !include packages/notify/notify.yaml
+shell_command: !include packages/shell/shell.yaml
+light: !include packages/light/light.yaml
+input_select: !include packages/inputs/select.yaml
+frontend: !include packages/themes/themes.yaml
+device_tracker: !include packages/device tracker/device tracker.yaml
+nest: !include packages/nest/nest.yaml
+media_player: !include packages/media player/media player.yaml
+panel_iframe: !include packages/iframe/iframe.yaml
+logger: !include packages/logger/logger.yaml
+ifttt: !include packages/ifttt/ifttt.yaml
+http: !include packages/http/http.yaml
+recorder: !include packages/recorder/recorder.yaml
+input_number: !include packages/number/number.yaml
+input_boolean: !include packages/boolean/boolean.yaml
+history_graph: !include packages/history graph/graph.yaml
+homekit: !include packages/homekit/homekit.yaml
+binary_sensor: !include packages/binary sensor/device tracker.yaml
+fan: !include packages/fan/fan.yaml

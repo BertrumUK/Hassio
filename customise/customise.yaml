@@ -1,0 +1,475 @@
+
+    sensor.speedtest_download:
+       friendly_name: 'Download'
+       icon: mdi:speedometer
+    sensor.speedtest_upload:
+       friendly_name: 'Upload'
+       icon: mdi:speedometer
+    sensor.speedtest_ping:
+       friendly_name: 'Ping'
+       icon: mdi:speedometer
+    sensor.wan_ip:
+       friendly_name: 'External IP Address'
+       icon: mdi:router-wireless
+
+       
+ ########## Weather  #############
+    sensor.dark_sky_summary:
+       friendly_name: 'Summary'
+    sensor.dark_sky_temperature:
+       friendly_name: 'Outdoor Temperature'
+    sensor.dark_sky_apparent_temperature:
+       friendly_name: 'Feels Like'
+    sensor.dark_sky_humidity:
+       friendly_name: 'Humidity'
+    sensor.dark_sky_precip:
+       friendly_name: 'Precipitation'
+    sensor.dark_sky_precip_intensity:
+       friendly_name: 'Precipitation Intensity'
+    sensor.dark_sky_precip_probability:
+       friendly_name: 'Precipitation Probability'
+    sensor.dark_sky_dew_point:
+       friendly_name: 'Dew Point'
+    sensor.dark_sky_wind_bearing:
+       friendly_name: 'Wind Bearing'
+    sensor.dark_sky_wind_speed:
+       friendly_name: 'Wind Speed'
+    sensor.dark_sky_cloud_coverage:
+       friendly_name: 'Cloud Coverage'
+    sensor.dark_sky_nearest_storm_distance:
+       friendly_name: 'Nearest Storm Distance'
+    sensor.dark_sky_nearest_storm_bearing:
+       friendly_name: 'Nearest Storm Bearing'
+    sensor.dark_sky_pressure:
+       friendly_name: 'Pressure'
+    sensor.air_quality:
+       icon: mdi:cloud-check
+    sensor.waqi_southampton_centre_united_kingdom:
+      friendly_name: 'Air Quality'
+    sensor.us_air_quality_index:
+      friendly_name: A33 Air Quality
+      icon: mdi:cloud-check  
+    sensor.nextsunrise:
+      icon: mdi:weather-sunset-up
+    sensor.nextsunset:
+      icon: mdi:weather-sunset-down
+    sensor.dayofyear:
+      icon: mdi:calendar-today
+    sensor.weekofyear:
+      icon: mdi:calendar-clock 
+       
+ ######## Efergy ##########
+    sensor.energy_budget:
+       icon: mdi:power-plug
+    sensor.energy_cost:
+       icon: mdi:power-plug
+    sensor.energy_usage:
+       icon: mdi:power-plug
+    sensor.efergy_650958:
+       icon: mdi:power-plug
+       friendly_name: 'Energy Usage'    
+    sensor.energy_consumed:
+       friendly_name: 'Daily Usage'
+       icon: mdi:power-plug
+
+     
+####### Travel ##########     
+    sensor.neil_home_to_work:
+       icon: mdi:car
+    sensor.neil_work_to_home:
+       icon: mdi:car
+    sensor.julie_home_to_work:
+       icon: mdi:car
+    sensor.julie_work_to_home:
+       icon: mdi:car
+
+    weblink.m27_jcn_3:
+       icon: mdi:car
+    weblink.m27_to_m3:
+       icon: mdi:car
+    weblink.m3_chandlers_ford:
+       icon: mdi:car
+    weblink.m3_twyford:
+       icon: mdi:car
+
+       
+########## House ###########
+
+######Hallway######
+    sensor.hallway_thermostat_operation_mode:
+       friendly_name: 'Nest Mode'
+       icon: mdi:thermostat
+    sensor.hallway_humidity:
+       friendly_name: 'Hallway Humidity'
+       icon: mdi:water-percent
+    sensor.hallway_temperature:
+       friendly_name: 'Hallway Temperature'
+       icon: mdi:thermometer
+    binary_sensor.hallway_thermostat_online:
+       friendly_name: 'Nest Online Status'
+    sensor.hallway_thermostat_target:
+       friendly_name: 'Target Temperature'
+    binary_sensor.hallway_thermostat_is_using_emergency_heat:
+       friendly_name: 'Emergency Heat Mode'
+    climate.hallway:
+       friendly_name: 'Thermostat'
+    sensor.hallway_pir:
+       icon: mdi:run
+    sensor.hallway_LDR:
+       icon: mdi:weather-sunny       
+    sensor.hallway_sensor:
+      friendly_name: 'Hallway'
+      icon: mdi:raspberrypi
+    sensor.front_door_pir:
+       icon: mdi:run 
+       
+######Living Room######       
+    sensor.living_room_humidity:
+       icon: mdi:water-percent
+    sensor.mqtt_rf:
+       friendly_name: 'Living Room NodeMCU'
+       icon: mdi:raspberrypi 
+    sensor.mqtt_rf_temperature:
+       icon: mdi:thermometer
+       friendly_name: 'Living Room Temperature'
+    sensor.mqtt_rf_humidity:
+       icon: mdi:water-percent
+       friendly_name: 'Living Room Humidity'
+    switch.lights:
+       icon: mdi:lightbulb
+       friendly_name: 'Lights'
+    switch.lights_2:
+       icon: mdi:lightbulb
+       friendly_name: 'Lights'
+    group.lights:
+       icon: mdi:lightbulb
+    switch.tv:
+       icon: mdi:television
+    switch.webcam:
+       icon: mdi:webcam
+    switch.fireplace:
+       icon: mdi:fire
+    switch.bedroom_fan:
+       icon: mdi:fan
+    automation.bedroom_fan_off_2300:
+       icon: mdi:fan
+    automation.bedroom_fan_off_0000:
+       icon: mdi:fan
+    automation.bedroom_fan_off_0100:
+       icon: mdi:fan
+    automation.bedroom_fan_off_0630:
+       icon: mdi:fan
+    switch.christmas_lights:
+       icon: mdi:pine-tree
+       
+######Conservatory######    
+    sensor.conservatory_humidity:
+       icon: mdi:water-percent
+    sensor.conservatory_temperature:
+       icon: mdi:thermometer
+    sensor.conservatory_LDR:
+       icon: mdi:weather-sunny
+    sensor.conservatory_PIR:
+       icon: mdi:run
+    sensor.nodemcu:
+       friendly_name: 'Conservatory NodeMCU'
+       icon: mdi:raspberrypi    
+    sensor.sht30_voltage:
+       icon: mdi:battery
+    sensor.sht30_humidity:
+       icon: mdi:water-percent
+    sensor.bme_temperature:
+       friendly_name: 'Utility Room Temperature'
+    sensor.bme_humidity:
+       icon: mdi:water-percent
+       friendly_name: 'Utility Room Humidity'
+    sensor.bme_pressure:
+       icon: mdi:cloud-download
+       friendly_name: 'Barometric Pressure'       
+       
+######Bedroom######           
+    sensor.bedroom_humidity:
+       icon: mdi:water-percent
+    sensor.bedroom_wemos:
+       icon: mdi:hotel
+    sensor.bedroom_wifi_rssi:
+       icon: mdi:wifi
+    switch.sonoff1:
+       friendly_name: Ensuite Radiator
+       icon: mdi:radiator
+    sensor.sonoff_temperature:
+       friendly_name: Ensuite Temperature
+    sensor.sonoff_humidity:
+       friendly_name: Ensuite Humidity
+       icon: mdi:water-percent 
+    sensor.sonoff:
+       friendly_name: Ensuite Sonoff
+       icon: mdi:radiator
+       
+######Utility Room######          
+    sensor.utility_room_humidity:
+       icon: mdi:water-percent
+    sensor.garage_humidity:
+       icon: mdi:water-percent 
+    sensor.utility_room_pir:
+       icon: mdi:run
+    sensor.utility_room_sensor:
+       friendly_name: 'Utility Room'
+       icon: mdi:raspberrypi
+    sensor.bme280_pir:
+       icon: mdi:run
+       friendly_name: 'Utility Room PIR'
+
+
+       
+######Boiler######              
+    sensor.boiler_wemos:
+       friendly_name: 'Boiler Wemos'
+       icon: mdi:raspberrypi
+    sensor.hot_water_wemos:
+       friendly_name: 'Hot Water Wemos'
+       icon: mdi:raspberrypi
+    switch.red:
+       icon: mdi:water
+       friendly_name: 'Hot'
+    switch.green:
+       icon: mdi:water
+       friendly_name: 'Warm'
+    switch.blue:
+       icon: mdi:water
+       friendly_name: 'Cold'
+       
+######Garage######  
+    sensor.garage_sensor:
+       friendly_name: 'Garage'
+       icon: mdi:raspberrypi     
+       
+######Misc######      
+    sensor.solar_LDR:
+       icon: mdi:weather-sunny       
+    sensor.retropie:
+       icon: mdi:raspberrypi 
+
+
+##### Fitbit #######
+
+    sensor.fitbitdistance:
+       icon: mdi:run      
+    group.fitbit:
+      friendly_name: Fitbit
+      
+##### Strava #######
+    sensor.last_ride_date:
+       icon: mdi:calendar-multiple-check
+    sensor.time_duration:
+       icon: mdi:timer
+    sensor.distance:
+       icon: mdi:map-marker-distance
+    sensor.average_speed:
+       icon: mdi:speedometer
+    sensor.average_watts:
+       icon: mdi:battery-charging-outline
+    sensor.elevation_gain:
+       icon: mdi:elevation-rise
+    sensor.calories:
+       icon: mdi:food
+    sensor.achievements:
+       icon: mdi:trophy-outline
+       
+##### Family #######       
+    group.alex:
+       entity_picture: /local/alex.jpg
+
+    group.cerys:
+       entity_picture: /local/cerys.jpeg
+    
+######### Pi ##########
+       
+    sensor.uptime:
+      icon: mdi:home-assistant
+      friendly_name: HA Uptime
+    sensor.ha_current_version:
+      icon: mdi:home-assistant
+    sensor.ssl_Cert_Expiry:
+      icon: mdi:home-assistant
+    input_boolean.restart_hass:
+      friendly_name: Restart HA
+
+    sensor.igd_sent_bytes:
+       friendly_name: 'Sent Bytes'
+    sensor.igd_received_bytes:    
+       friendly_name: 'Received Bytes'
+
+    sensor.disk_use_home:
+       friendly_name: 'Used Space'
+    sensor.disk_free_home:
+       friendly_name: 'Free Space'
+
+    sensor.stats_mean:
+       friendly_name: 'Mean Cost'
+    sensor.stats_mean_2:
+       friendly_name: 'Mean Usage'
+
+    sensor.since_last_boot_templated:
+       friendly_name: 'Uptime'
+       icon: mdi:clock-start
+
+    sensor.connected_clients:
+       friendly_name: 'Connected Clients'
+       icon: mdi:home-assistant
+
+    sensor.mold_indicator:
+       friendly_name: 'Mould Indicator'
+       icon: mdi:water-percent
+  
+    sensor.minutesfairlyactive:
+       friendly_name: 'Fairly Active Minutes'
+    sensor.minuteslightlyactive:
+       friendly_name: 'Lightly Active Minutes'
+    sensor.minutesveryactive:
+       friendly_name: 'Very Active Minutes'
+    sensor.minutessedentary:
+       friendly_name: 'Sedentary Minutes'
+       
+ ######## Travis CI #######
+
+    sensor.bertrumukhassio_last_build_finished_at:
+       friendly_name: 'Build Time'
+    sensor.bertrumukhassio_state:
+       friendly_name: 'Build State'
+    sensor.bertrumukhassio_last_build_duration:
+       friendly_name: 'Build Duration'
+
+    
+    sensor.boiler_uptime:  
+       friendly_name: 'Uptime'
+       icon: mdi:clock-start
+       
+    sensor.boiler_wifi_rssi:  
+       friendly_name: 'WiFi RSSI'
+       icon: mdi:wifi
+       
+    sensor.hot_water_uptime:  
+       friendly_name: 'Uptime'
+       icon: mdi:clock-start
+       
+    sensor.hot_water_wifi_rssi:  
+       friendly_name: 'WiFi RSSI'
+       icon: mdi:wifi
+
+    sensor.alexa:
+       icon: mdi:amazon
+    sensor.chromecast:
+       icon: mdi:google-chrome
+    sensor.hummy:
+       icon: mdi:television
+    sensor.obihai:
+       icon: mdi:phone-voip
+    sensor.nest:
+       icon: mdi:nest-thermostat
+    sensor.roku:
+       icon: mdi:television
+    sensor.alex_pc:
+       icon: mdi:windows
+    sensor.ps4:
+       icon: mdi:playstation
+    sensor.efergy:
+       icon: mdi:power-plug
+    sensor.readynas:
+       icon: mdi:server
+       
+ ########## Humax ##########      
+    switch.humax_mute:
+        icon: mdi:remote
+    switch.humax_power:
+        icon: mdi:remote
+    switch.humax_bbc_one:
+        icon: mdi:remote
+    switch.humax_channel_up:
+        icon: mdi:remote
+    switch.humax_channel_down:
+        icon: mdi:remote
+    switch.humax_forward:
+        icon: mdi:remote
+    switch.humax_back:
+        icon: mdi:remote
+    switch.humax_volume_up:
+        icon: mdi:remote
+    switch.humax_volume_down:
+        icon: mdi:remote  
+    switch.humax_info:
+        icon: mdi:remote 
+    switch.humax_fake_command:
+        icon: mdi:remote 
+    switch.sharp_tv_channel_up:
+        icon: mdi:remote 
+    switch.sharp_tv_channel_down:
+        icon: mdi:remote 
+
+########## Pi Hole ########## 
+    sensor.ads_percentage_today:
+      friendly_name: Percentage Blocked
+      unit_of_measurement: '%'
+      icon: mdi:ticket-percent
+     
+    sensor.domains_being_blocked:
+      friendly_name: Total Domains Blocking
+      icon: mdi:do-not-disturb
+
+    sensor.ads_blocked_today:
+      friendly_name: Ads Blocked Today
+      icon: mdi:do-not-disturb
+      
+    sensor.dns_queries_today:
+      friendly_name: DNS Queries Today
+      icon: mdi:note-text
+      
+    sensor.unique_domains:
+      friendly_name: Unique Domains
+      icon: mdi:approval
+
+    sensor.queries_forwarded:
+      friendly_name: Queries Forwarded
+      icon: mdi:arrange-send-backward
+
+    sensor.queries_cached:
+      friendly_name: Queries Cached
+      icon: mdi:animation
+
+
+
+# Order groups or entities using order: with a number
+    group.family:
+      order: '1'
+    group.living_room:
+      order: '2'
+    group.bedroom:
+      order: '3'
+    group.utility_room:
+      order: '4'
+    group.nest:
+      order: '5'
+    group.webcam:
+      order: '6'
+    group.weather:
+      order: '7'
+    group.sonoff:
+      order: '8'
+    group.remote_sockets:
+      order: '9'
+    group.automation:
+      order: '10'
+    group.travel:
+      order: '11'
+    group.energy:
+      order: "12"
+    group.broadband:
+      order: '13'
+    group.dns:
+      order: '14'
+    group.raspberry_pi_3:
+      order: '15'   
+    group.iphone:
+      order: '16'
+    group.connected_clients:
+      order: '17'

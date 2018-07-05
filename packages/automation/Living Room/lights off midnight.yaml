@@ -1,0 +1,15 @@
+########## Lights off at midnight if on ##########
+
+  alias: Lights Off Midnight
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+    condition: state
+    entity_id: group.lights
+    state: 'on'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.lights
+  - service: homeassistant.turn_off
+    entity_id: switch.lights

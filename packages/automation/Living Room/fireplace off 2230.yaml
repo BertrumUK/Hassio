@@ -1,0 +1,13 @@
+######### Fireplace off 22:30 ############
+
+  alias: Fireplace off 22:30
+  trigger:
+    platform: time
+    at: '22:30:00'
+  condition:
+    condition: state
+    entity_id: switch.fireplace
+    state: 'on'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.fireplace

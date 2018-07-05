@@ -1,0 +1,10 @@
+  alias: 'CPU High Usage Alert'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.average_load_1m
+    above: 5
+  action:
+    service: notify.ios_neil
+    data:
+      title: "Home Assistant CPU High Usage Alert"
+      message: "Current CPU Usage (1 Minute) {{ states.sensor.average_load_1m.state}}"

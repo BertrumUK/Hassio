@@ -1,0 +1,13 @@
+
+  #platform: pushbullet
+  #api_key: !secret pushbullet
+  #name: Neil
+
+
+  name: twitter
+  platform: twitter
+  consumer_key: !secret consumer_key
+  consumer_secret: !secret consumer_secret
+  access_token: !secret access_token
+  access_token_secret: !secret access_token_secret
+  username: "@bertrum"

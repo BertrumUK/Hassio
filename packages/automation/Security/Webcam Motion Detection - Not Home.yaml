@@ -1,0 +1,12 @@
+  alias: Webcam Motion Detection - Not Home
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.webcam_motion
+    above: 300.0
+  condition:
+   - condition: state
+     entity_id: group.family
+     state:  not_home
+  action:
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.webcam_motion

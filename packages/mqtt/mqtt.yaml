@@ -1,0 +1,6 @@
+  #embedded:
+  broker: 192.168.0.60
+  port: 1883
+  client_id: home-assistant-1
+  username: !secret mqttuser
+  password: !secret mqttpassword

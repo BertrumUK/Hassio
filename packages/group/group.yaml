@@ -1,0 +1,523 @@
+  default_view:
+    view: yes
+    icon: mdi:home-assistant
+    entities:
+      - group.family
+      - group.channel_select
+      - group.living_room
+      - group.water
+      - camera.front_door
+      - camera.garden
+      - updater.updater
+      
+  Household_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.hallway
+      - group.bedroom
+      - group.bme280
+      - group.utility_room
+      - group.conservatory
+      - group.garage
+      - group.boiler
+      - group.water_tank
+      - group.sht30
+
+
+  Security_view:
+    view: yes
+    icon: mdi:security-home
+    entities:
+      - group.system_armed
+      - group.security
+      - group.sensor_triggers
+
+  Travel_View:
+    view: yes
+    icon: mdi:car
+    name: Travel
+    entities:
+      - group.travel
+      - group.traffic
+      - camera.1_m27_jcn_3
+      - camera.2_m27_rownhams_services
+      - camera.3_m27_to_m3
+      - camera.4_m3_jcn_14
+      - camera.5_m3_j12_eastleigh
+      - camera.6_m3_j11_twyford
+      - camera.7_m3_twyford
+
+  Weather_View:
+    view: yes
+    icon: mdi:weather-rainy
+    name: Weather
+    entities:
+      - group.almanac
+      - group.weather
+      - group.weather_animations
+
+
+  Automation_View:
+    view: yes
+    icon: mdi:robot
+    name: Automation
+    entities:
+      - group.automation_living_room
+      - group.automation_bedroom
+      - group.home_assistant
+
+  Network_Devices:
+    view: yes
+    icon: mdi:network
+    name: Network Devices
+    entities:
+     #- group.devices
+      - group.device_state
+
+
+  Misc_View:
+    view: yes
+    icon: mdi:raspberrypi
+    name: Misc
+    entities:
+      - group.energy
+      - group.broadband
+      - group.raspberry_pi_3
+      - group.travis_CI
+      - group.dns
+      - group.iphone
+      - group.connected_clients
+
+  Health_View:
+    view: yes
+    icon: mdi:run
+    name: Health
+    entities:
+      - group.fitbit
+      - group.strava
+
+  Media_View:
+    view: yes
+    icon: mdi:television
+    name: Media Player
+    entities:
+      - media_player.roku_lt
+      - media_player.neils_chromecast
+
+
+  TV_Remote:
+     view: yes
+     icon: mdi:remote
+     name: TV Remote
+     entities:
+      - group.channel_select
+      - group.remote_control
+      - group.channel_enable
+      
+  House_Environment:
+     view: yes
+     icon: mdi:thermometer
+     name: House Environment
+     entities:
+      - group.environment
+
+####Groups####
+  Family:
+    - device_tracker.Neil
+    - device_tracker.Julie
+    - group.alex
+    - group.cerys
+
+  Hallway:
+    - climate.hallway
+    - sensor.hallway_temperature
+    - sensor.hallway_humidity
+    - sensor.dark_sky_temperature
+    - sensor.hallway_thermostat_target
+    - sensor.hallway_thermostat_operation_mode
+    - binary_sensor.hallway_thermostat_online
+    - binary_sensor.hallway_thermostat_is_using_emergency_heat
+
+  #Thermostat:
+   # - climate.hallway
+
+  Travel:
+    - device_tracker.peugeot
+    - sensor.neil_home_to_work
+    - sensor.neil_work_to_home
+    - sensor.julie_home_to_work
+    - sensor.julie_work_to_home
+    #- automation.evening_briefing__work_to_home_days
+    #- automation.morning_briefing__home_to_work_days
+    #- automation.morning_briefing__work_to_home_nights
+    #- automation.evening_briefing__home_to_work_nights
+
+  Traffic:
+    - input_boolean.home_to_work_days
+    - input_boolean.work_to_home_days
+    - input_boolean.home_to_work_nights
+    - input_boolean.work_to_home_nights
+
+  Raspberry Pi 3:
+    - input_boolean.restart_hass
+   # - sensor.ssl_Cert_Expiry
+    - sensor.ssl_certificate_expiry
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.load_15m
+    - sensor.uptime
+    - sensor.ha_current_version
+    - sensor.cpu_temperature
+    - sensor.disk_free_home
+    - sensor.hallway_last_ip
+    - sensor.disk_use_home
+    - sensor.ram_use_2
+    - sensor.ram_use
+    - sensor.ram_free
+    - sensor.processor_use
+    - sensor.last_boot
+    - sensor.since_last_boot_templated
+    
+  Travis CI:
+    - sensor.bertrumukhassio_state
+    - sensor.bertrumukhassio_last_build_duration
+    - sensor.bertrumukhassio_last_build_finished_at
+
+    
+  PI Hole:
+    - group.dns 
+
+  Connected Clients:
+    - sensor.connected_clients
+
+  Broadband:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.igd_sent_bytes
+    - sensor.igd_received_bytes
+    - sensor.wan_ip
+
+
+  Energy:
+    - sensor.energy_budget
+    - sensor.energy_cost
+ #  - sensor.energy_usage // broken since API maint. See https://github.com/home-assistant/home-assistant/issues/11861
+    - sensor.efergy_650958
+    - sensor.energy_consumed
+
+  Weather:
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_wind_bearing
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_nearest_storm_distance
+    - sensor.dark_sky_nearest_storm_bearing
+    - sensor.dark_sky_pressure
+    
+  Almanac:
+    - sun.sun
+    - sensor.nextsunrise
+    - sensor.nextsunset
+    - sensor.moon
+    - sensor.us_air_quality_index
+    - sensor.waqi_southampton_centre_united_kingdom
+    - sensor.air_quality
+    - sensor.dayofyear
+    - sensor.weekofyear 
+    - sensor.date
+    - sensor.time
+    - sensor.time_utc
+
+  Weather Animations:
+    - camera.rain_radar
+    - camera.jetstream
+
+
+  Fitbit:
+    - sensor.steps
+    - sensor.fitbitdistance
+    - sensor.minutes_lightly_active
+    - sensor.minutes_fairly_active
+    - sensor.minutes_very_active
+    - sensor.minutes_sedentary
+    - sensor.alta_battery
+    - sensor.sleep_efficiency
+
+  Strava:
+    - sensor.last_ride_date
+    - sensor.time_duration
+    - sensor.distance
+    - sensor.average_speed
+    - sensor.average_watts
+    - sensor.elevation_gain
+    - sensor.calories
+    - sensor.achievements
+
+
+  Ensuite:
+    - switch.sonoff1
+    - sensor.sonoff_temperature
+    - sensor.sonoff_humidity
+
+  Automation Living Room:
+    - automation.family_home_lights
+    - automation.lights_on_sunset
+    - automation.lights_off_midnight
+    - automation.fireplace_on_sunset
+    - automation.hummy_on_630am
+    - automation.water_temperature_led_on_0600
+    #- automation.christmas_lights_on_sunset
+    
+  Automation Bedroom:
+    - input_boolean.ensuite_radiator
+    - automation.ensuite_radiator_on_high_humidity
+    - input_boolean.bedroom_fan
+    - automation.bedroom_fan_off_2300
+    - automation.bedroom_fan_off_0000
+    - automation.bedroom_fan_off_0100
+    - automation.bedroom_fan_off_0630
+
+  Home Assistant:
+    - automation.broadband_drop
+    - automation.ssl_renew_warning
+    - automation.air_quality_alert
+  #- automation.ensuite_power_retain
+  #- automation.light_1_power_retain
+  #- automation.light_2_power_retain
+    - automation.cpu_high_usage_alert
+########### House ##############
+
+  Lights:
+    - switch.light1
+    - switch.light2
+
+  Living Room:
+    - switch.lights
+    - switch.tv
+    - switch.fireplace
+    #- switch.christmas_lights
+    - sensor.mqtt_rf_temperature
+    - sensor.mqtt_rf_humidity
+    - sensor.mold_indicator
+    - light.led_strip
+    - input_number.led_animation_speed
+  
+  Bedroom:
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
+    - sensor.bedroom_wifi_rssi
+    - switch.bedroom_fan
+    - switch.sonoff1
+    - sensor.sonoff_temperature
+    - sensor.sonoff_humidity
+    
+  Bedroom Wemos:
+    - device_tracker.bedroom_wemos
+    - device_tracker.bedroom_wemos2
+    
+#  Utility Room:
+#   - sensor.utility_room_temperature
+#   - sensor.utility_room_humidity
+#   - sensor.utility_room_real_feel
+    
+  Conservatory:
+    - sensor.conservatory_temperature
+    - sensor.conservatory_humidity  
+    - sensor.conservatory_LDR
+    #- fan.conservatory_fan
+
+  Garage:
+    - sensor.garage_temperature
+    - sensor.garage_humidity
+
+  #Webcam:
+    #- switch.webcam_night_vision
+    #- switch.webcam_overlay
+
+  Peugeot:
+    - device_tracker.obdii
+
+  iPhone:
+    - sensor.iphone_battery_level
+    - sensor.iphone_battery_state
+    
+  Environment:  
+    - sensor.mqtt_rf_temperature
+    - sensor.mqtt_rf_humidity
+    - sensor.kitchen_temperature
+    - sensor.hallway_temperature
+    - sensor.hallway_humidity
+    - sensor.bedroom_temperature
+    - sensor.bedroom_humidity
+    - sensor.sonoff_temperature
+    - sensor.sonoff_humidity
+    - sensor.bme_temperature
+    - sensor.bme_humidity
+    - sensor.conservatory_temperature
+    - sensor.conservatory_humidity
+    - sensor.garage_temperature
+    - sensor.garage_humidity
+    - history_graph.living_room
+    - history_graph.hallway
+    - history_graph.bedroom
+    - history_graph.conservatory
+
+  SHT30:
+    - sensor.sht30_temperature
+    - sensor.sht30_humidity  
+    - sensor.sht30_voltage
+
+  Utility Room:
+    - sensor.bme_temperature
+    - sensor.bme_humidity
+    - sensor.bme_pressure
+    
+########### Network Devices ##############    
+    
+  Devices:
+    - sensor.retropie
+    - device_tracker.yicam_front_door
+    - device_tracker.yicam_garden
+    - sensor.boiler_wemos
+    - sensor.hot_water_wemos
+    - sensor.nodemcu
+    - sensor.mqtt_rf
+    - sensor.bedroom_wemos
+    - sensor.sonoff
+    - sensor.hallway_sensor
+    - sensor.utility_room_sensor
+    - sensor.garage_sensor
+    - sensor.chromecast
+    - sensor.hummy
+    - sensor.obihai
+    - sensor.nest
+    - sensor.roku
+    - sensor.alex_pc
+    - sensor.readynas
+    
+  Device State:
+    - binary_sensor.device_tracker_retropie
+    - binary_sensor.device_tracker_yicam_front_door
+    - binary_sensor.device_tracker_yicam_garden
+    - binary_sensor.device_tracker_boiler_wemos
+    - binary_sensor.device_tracker_hot_water_wemos
+    - binary_sensor.device_tracker_nodemcu
+    - binary_sensor.device_tracker_mqtt_rf
+    - binary_sensor.device_tracker_bedroom_wemos
+    - binary_sensor.device_tracker_sonoff
+    - binary_sensor.device_tracker_hallway_sensor
+    - binary_sensor.device_tracker_utility_room_sensor
+    - binary_sensor.device_tracker_garage_sensor
+    - binary_sensor.device_tracker_chromecast
+    - binary_sensor.device_tracker_hummy
+    - binary_sensor.device_tracker_obihai
+    - binary_sensor.device_tracker_nest
+    - binary_sensor.device_tracker_roku
+    - binary_sensor.device_tracker_alex_pc
+    - binary_sensor.device_tracker_readynas
+
+########### Humax ##############
+
+  Channel Select:
+    - input_select.channel  
+  Remote Control:
+    - switch.humax_mute
+    - switch.humax_power
+    - switch.humax_volume_up
+    - switch.humax_volume_down
+    - switch.humax_channel_up
+    - switch.humax_channel_down
+    - switch.humax_forward
+    - switch.humax_back
+    - switch.humax_info
+    - switch.humax_fake_command
+    - switch.sharp_tv_channel_up
+    - switch.sharp_tv_channel_down
+
+
+  Channel Enable:
+    - automation.bbc_one
+    - automation.bbc_one_hd
+    - automation.bbc_two
+    - automation.itv
+    - automation.itv_hd
+    - automation.channel_4_hd
+    - automation.channel_5_hd
+
+########### Security ##############      
+
+  Security:
+    - input_boolean.front_doorbell
+    - input_boolean.landing_motion_home    
+    - sensor.front_door_pir
+    - sensor.hallway_pir
+    - sensor.bme280_pir
+   #- sensor.utility_room_pir
+    - sensor.conservatory_pir
+    - sensor.webcam_motion
+    - light.hallway_led
+   #- light.utility_room_led
+    - light.conservatory_led
+ 
+  Sensor Triggers:
+    - input_boolean.hallway_motion
+    - input_boolean.landing_motion
+    - input_boolean.utility_motion
+    - input_boolean.conservatory_motion
+    - input_boolean.frontdoor_motion
+    - input_boolean.webcam_motion
+    
+  
+  System Armed:
+    - automation.front_door_motion_detection    
+    - automation.hallway_motion_detection
+    - automation.landing_motion_detection
+    - automation.utility_room_motion_detection
+    - automation.conservatory_motion_detection
+    - automation.webcam_motion_detection
+  
+  Boiler:
+    - sensor.feed_temperature
+    - sensor.return_temperature
+    - sensor.kitchen_temperature
+    - sensor.boiler_uptime
+    - sensor.boiler_wifi_rssi
+    
+  Water Tank:
+    - sensor.water_temperature
+    - sensor.hot_water_uptime
+    - sensor.hot_water_wifi_rssi
+    
+  Water:
+    - switch.red
+    - switch.green
+    - switch.blue
+
+  Alex:
+    - device_tracker.alex
+    - device_tracker.alex_ 
+
+  Cerys:
+    - device_tracker.cerys
+    - device_tracker.cerys_
+  
+######## PI Hole ########
+
+  DNS:
+    entities:
+      - sensor.dns_queries_today
+      - sensor.domains_being_blocked
+      - sensor.ads_blocked_today
+      - sensor.ads_percentage_today
+      - sensor.unique_domains
+      - sensor.queries_forwarded
+      - sensor.queries_cached

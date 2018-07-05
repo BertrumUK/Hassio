@@ -1,0 +1,21 @@
+########## Morning Briefing - Home to Work Days ##########
+        
+  alias: Morning Briefing - Home to Work Days
+  trigger:
+    platform: time
+    at: '06:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.home_to_work_days
+    state: 'on'
+  action:
+    service: notify.ios_neil
+    data_template:
+        title: "Morning Briefing"
+        message: >
+                Current temperature is {{states('sensor.dark_sky_temperature')}} C with {{states('sensor.dark_sky_summary')}} skies. Current Air Quality is {{ states.sensor.waqi_southampton_centre_united_kingdom.state}}.
+                {{ "\n" }}
+                Travel time is currently {{states('sensor.neil_home_to_work')}} Minutes
+        data:
+          push:
+            sound: "US-EN-Alexa-Good-Morning.wav"

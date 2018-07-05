@@ -1,0 +1,8 @@
+  alias: 'HA Startup Alert'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: notify.ios_neil
+    data:
+      message: "Home Assistant Has Restarted"

@@ -1,0 +1,18 @@
+  alias: 'Front Door Motion Detection'
+  trigger:
+    platform: state
+    entity_id: sensor.front_door_pir
+    from: 'Standby'
+    to: 'Motion Detected'
+    for:
+      seconds: 5
+  condition:
+   - condition: state
+     entity_id: group.family
+     state:  not_home
+   - condition: numeric_state
+     entity_id: sensor.dark_sky_cloud_coverage
+     above:  40
+  action:
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.frontdoor_motion

@@ -1,0 +1,5 @@
+  default: warning
+  logs:
+    homeassistant.components.device_tracker: critical
+    homeassistant.components.camera: critical
+    requests.packages.urllib3.connectionpool: critical

@@ -1,0 +1,17 @@
+######### LED Lights on Green when light component turns on #########
+  alias: LED Lights on Green
+  trigger:
+    platform: state
+    entity_id: switch.lights
+    to: "on"
+  action:
+  #- service: homeassistant.turn_on
+    #entity_id: switch.lights
+  - delay:
+# LED strip delay after power on
+          seconds: 5
+  - service: homeassistant.turn_on
+    entity_id: light.led_strip
+    data:
+      brightness: 128
+      rgb_color: [0, 255, 0] # Green LED on power on

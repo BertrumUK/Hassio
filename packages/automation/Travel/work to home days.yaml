@@ -1,0 +1,19 @@
+########## Work to Home Days ##########
+
+  alias: Work to Home Days 
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.neil_work_to_home
+    above: 70
+  condition:
+    - condition: time
+      after: '18:00'
+      before: '21:00'
+    - condition: state
+      entity_id: input_boolean.work_to_home_days
+      state: 'on'  
+  action:
+    service: notify.ios_neil
+    data_template:
+        title: "Traffic Alert - Work to Home Days"
+        message: "Current travel time is {{ states.sensor.neil_work_to_home.state }} minutes"

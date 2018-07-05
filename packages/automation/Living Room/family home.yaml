@@ -1,0 +1,25 @@
+  alias: Family Home Lights
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: "not_home"
+    to: "home"
+  condition:
+   - condition: state
+     entity_id: group.family
+     state: "home"
+   - condition: sun
+     after: 'sunset'
+   - condition: time  
+     before: '22:00'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: switch.lights
+  - delay:
+          # LED strip delay after power on
+          seconds: 10
+  - service: homeassistant.turn_on
+    entity_id: light.led_strip
+    data:
+      brightness: 100
+      rgb_color: [0, 255, 0] # Green LED on power on

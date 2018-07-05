@@ -1,0 +1,10 @@
+########## Night Vision off  depending on light level ##########
+
+  alias: Night Vision Off Sunrise
+  trigger:
+   platform: numeric_state
+   entity_id: sensor.conservatory_ldr
+   above: 150
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.webcam_night_vision

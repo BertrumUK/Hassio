@@ -1,0 +1,62 @@
+  restart_hass:
+    initial: off
+  front_doorbell:
+    name: Front Doorbell
+    initial: off
+    icon: mdi:door
+  hallway_motion:
+    name: Hallway Motion
+    initial: off
+    icon: mdi:run
+  landing_motion:
+    name: Landing Motion
+    initial: off
+    icon: mdi:run
+  landing_motion_home:
+    name: Landing Motion
+    initial: off
+    icon: mdi:run
+  utility_motion:
+    name: Utility Room Motion
+    initial: off
+    icon: mdi:run
+  conservatory_motion:
+    name: Conservatory Motion
+    initial: off
+    icon: mdi:run
+  webcam_motion:
+    name: WebCam Motion
+    initial: off
+    icon: mdi:run
+  frontdoor_motion:
+    name: Front Door Motion
+    initial: off
+    icon: mdi:run
+  ensuite_radiator:
+    name: Ensuite Radiator Timer On
+    initial: on
+    icon: mdi:radiator
+  bedroom_fan:
+    name: Bedroom Fan On 22:30
+    #initial: off
+    icon: mdi:fan
+  home_to_work_days:
+    name: Home To Work Days
+    #initial: on
+    icon: mdi:car
+  work_to_home_days:
+    name: Work To Home Days
+    #initial: true
+    icon: mdi:car
+  home_to_work_nights:
+    name: Home To Work Nights
+    #initial: on
+    icon: mdi:car
+  work_to_home_nights:
+    name: Work To Home Nights
+  #  initial: true
+    icon: mdi:car
+  lights:
+    name: lights
+    initial: off
+    icon: mdi:lightbulb

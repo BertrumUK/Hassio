@@ -1,0 +1,12 @@
+########## Broadband Drop ##########
+
+  alias: Broadband Drop
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.speedtest_download
+    below: 10
+  action:
+    service: notify.ios_neil
+    data_template:
+        title: "Broadband Drop"
+        message: "Check Broadband Speed"

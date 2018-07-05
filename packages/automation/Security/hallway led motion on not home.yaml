@@ -1,0 +1,18 @@
+  alias: Hallway Motion Trigger LED On - Not Home
+  trigger:
+    platform: state
+    entity_id: sensor.hallway_pir
+    from: 'Standby'
+    to: 'Motion Detected'
+  condition:
+   - condition: state
+     entity_id: group.family
+     state: not_home
+  action:
+  - service: light.turn_on
+    entity_id: light.hallway_led
+    data:
+      brightness: 250
+      rgb_color: [255, 0, 0]
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.hallway_motion

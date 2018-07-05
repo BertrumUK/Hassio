@@ -1,0 +1,64 @@
+- platform: mjpeg
+  mjpeg_url: http://192.168.0.24:6779/video
+  name: Phonecam
+  username: neil
+  password: !secret cam_password
+  
+- platform: yi
+  name: Front Door
+  host: '192.168.0.21'
+  password: !secret yihome
+  ffmpeg_arguments: -s 800x450
+  
+- platform: yi
+  name: Garden
+  host: '192.168.0.22'
+  password: !secret yihome
+  ffmpeg_arguments: -s 800x450
+
+#### Traffic Cams ###
+# camera 2
+- platform: generic
+  name: 1 M27 Jcn 3
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/19111
+  #still_image_url: https://ichef.bbci.co.uk/traveluk/ha/19111/large
+    
+# camera 3
+- platform: generic
+  name: 3 M27 to M3
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/12178
+  #still_image_url: https://ichef.bbci.co.uk/traveluk/ha/12178/large
+    
+# camera 4
+- platform: generic
+  name: 4 M3 Jcn 14
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/12173
+  #still_image_url: https://ichef.bbci.co.uk/traveluk/ha/12156/large
+    
+# camera 5
+- platform: generic
+  name: 7 M3 Twyford
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/12077
+  #still_image_url: https://ichef.bbci.co.uk/traveluk/ha/12077/large
+  
+# camera 6
+- platform: generic
+  name: 5 M3 J12 Eastleigh
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/12126
+  #still_image_url: https://ichef.bbci.co.uk/traveluk/ha/12126/large
+
+- platform: generic
+  name: 2 M27 Rownhams Services
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/19131
+
+- platform: generic
+  name: 6 M3 J11 Twyford
+  still_image_url: http://public.hacctv.org.uk/cctvpublicaccess/images/12082
+
+- platform: generic
+  still_image_url: http://www.meteox.co.uk/images.aspx?jaar=-3&voor=&soort=loop-bliksem&c=&n=&tijdid=20091121831%20alt=
+  name: Rain Radar
+
+- platform: generic
+  still_image_url: http://virga.sfsu.edu/gif/jetstream_atl_loop.gif
+  name: Jetstream

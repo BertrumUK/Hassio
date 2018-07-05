@@ -1,0 +1,15 @@
+alias: "landing_motion"
+trigger:
+  platform: mqtt
+  topic: home/433toMQTT
+  payload: 15708649
+condition:
+     condition: state
+     entity_id: group.family
+     state: home
+action:
+ - service: homeassistant.turn_on
+   entity_id: input_boolean.landing_motion_home
+ - delay: 00:00:05
+ - service: homeassistant.turn_off
+   entity_id: input_boolean.landing_motion_home

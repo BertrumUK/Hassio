@@ -1,0 +1,21 @@
+alias: "front_doorbell_notification"
+trigger:
+  platform: state
+  entity_id: input_boolean.front_doorbell
+  from: 'off'
+  to: 'on'
+action:
+  - service: notify.ios_neil
+    data:
+      #title: "The Front Doorbell Has Been Pressed"
+      message: "The Front Doorbell Has Been Pressed"
+      data:
+          push:
+            sound: "klaxon.wav"
+  - service: notify.ios_ipad16gb
+    data:
+      #title: "The Front Doorbell Has Been Pressed"
+      message: "The Front Doorbell Has Been Pressed"
+  - delay: '00:00:30'
+  - service: homeassistant.turn_off
+    entity_id: input_boolean.front_doorbell

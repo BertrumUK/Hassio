@@ -1,0 +1,41 @@
+  gr1:
+    name: Living Room
+    entities:
+      - sensor.mqtt_rf_temperature
+      - sensor.mqtt_rf_humidity
+    hours_to_show: 72
+    refresh: 60
+  gr2:
+    name: Hallway
+    entities:
+      - sensor.hallway_temperature
+      - sensor.hallway_humidity
+    hours_to_show: 72
+    refresh: 60
+  gr3:
+    name: Bedroom
+    entities:
+      - sensor.bedroom_temperature
+      - sensor.bedroom_humidity
+    hours_to_show: 72
+    refresh: 60
+  gr4:
+    name: Utility Room
+    entities:
+      - sensor.utility_room_temperature
+      - sensor.utility_room_humidity
+    refresh: 60
+  gr5:
+    name: Conservatory
+    entities:
+      - sensor.conservatory_temperature
+      - sensor.conservatory_humidity
+    hours_to_show: 72
+    refresh: 60
+  gr6:
+    name: Garage
+    entities:
+      - sensor.garage_temperature
+      - sensor.garage_humidity
+    hours_to_show: 72
+    refresh: 60

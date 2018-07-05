@@ -1,0 +1,13 @@
+######### Ensuite radiator off 20:00 ############
+
+  alias: Ensuite radiator off 20:00
+  trigger:
+    platform: time
+    at: '20:00:00'
+  condition:
+    condition: state
+    entity_id: switch.sonoff1
+    state: 'on'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.sonoff1

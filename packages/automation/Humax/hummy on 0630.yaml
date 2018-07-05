@@ -1,0 +1,23 @@
+  alias: Hummy on 6:30am
+  trigger:
+    platform: time
+    at: '06:30:00'
+  condition:
+  - condition: state
+    entity_id: group.family
+    state: home
+  - condition: state  
+    entity_id: sensor.hummy
+    state: Off-line 
+  action:
+  - service: switch.turn_on
+    entity_id: switch.humax_power
+  - service: switch.turn_on
+    entity_id: switch.humax_fake_command
+  - service: notify.ios_neil
+    data_template:
+      title: "Hummy is turning on"
+      message: "The Hummy is being turned on"
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Turning-On-The-TV.wav"

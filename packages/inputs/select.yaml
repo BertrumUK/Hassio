@@ -1,0 +1,26 @@
+channel:
+  name: Channel
+  options:
+    - Channel
+    - BBC One
+    - BBC Two
+    - ITV
+    - Channel 4 HD
+    - Channel 5 HD
+    - BBC One HD
+    - ITV HD
+  initial: Channel
+  icon: mdi:remote
+
+#control:
+ # name: Control
+  #options:
+   # - Channel Up
+    #- Channel Down
+    #- Mute On
+    #- Mute Off
+    #- Skip Forward
+    #- Skip Back
+    #- Power
+  #initial: Power
+  #icon: mdi:remote

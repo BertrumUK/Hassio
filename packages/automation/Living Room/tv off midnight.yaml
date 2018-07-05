@@ -1,0 +1,13 @@
+########## TV off at midnight if on ##########
+
+  alias: TV Off Midnight
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+    condition: state
+    entity_id: switch.tv
+    state: 'on'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.tv

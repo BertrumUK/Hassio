@@ -1,0 +1,36 @@
+########## Lights on light level below 750##########
+
+  alias: Lights on Sunset
+  trigger:
+   platform: numeric_state
+   entity_id: sensor.conservatory_ldr
+   below: 750
+  condition:
+   - condition: state
+     entity_id: group.family
+     state: "home"
+   - condition: sun
+     after: 'sunset'
+     after_offset: '-01:30:00'
+   - condition: time
+     before: '22:00'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: group.lights
+  - service: homeassistant.turn_on
+    entity_id: switch.lights
+  - service: notify.ios_neil
+    data_template:
+      title: "Lights Are On"
+      message: "The living room lights have been turned on"
+      data:
+        push:
+          sound: "US-EN-Morgan-Freeman-Turning-On-The-Light.wav"    
+  - delay:
+          # LED strip delay after power on
+          seconds: 5
+  - service: homeassistant.turn_on
+    entity_id: light.led_strip
+    data:
+      brightness: 128
+      rgb_color: [0, 255, 0] # Green LED on power on

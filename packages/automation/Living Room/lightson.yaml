@@ -1,0 +1,10 @@
+alias: "lights on"
+trigger:
+  platform: mqtt
+  topic: home/433toMQTT
+  payload: 5578559
+action:
+ - service: homeassistant.turn_on
+   entity_id: group.lights
+ #- service: homeassistant.turn_on
+   #entity_id: switch.lights

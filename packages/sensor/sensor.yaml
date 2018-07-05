@@ -1,0 +1,738 @@
+- platform: darksky
+  api_key: !secret darksky
+  monitored_conditions:
+   - summary
+   - nearest_storm_distance
+   - nearest_storm_bearing
+   - precip_type
+   - precip_intensity
+   - precip_probability
+   - temperature
+   - apparent_temperature
+   - dew_point
+   - wind_speed
+   - wind_bearing
+   - cloud_cover
+   - humidity
+   - pressure
+
+# sensor 2
+- platform: api_streams
+
+########## Efergy Energy Monitor ##########
+# sensor 3
+- platform: efergy
+  app_token: !secret efergy_token
+  utc_offset: 0
+  monitored_variables:
+   #- type: instant_readings
+   - type: budget
+   - type: cost
+     period: day
+     currency: £
+   - type: amount
+     period: day
+   - type: current_values
+
+# sensor 4
+- platform: speedtest
+  minute:
+      - 0
+      - 15
+      - 45
+  
+  monitored_conditions:
+    - download
+    - upload
+    - ping
+    
+# sensor 5
+  # Tracking Home to Work
+- platform: google_travel_time
+  name: Neil Home to Work
+  api_key: !secret google_api
+  origin: !secret home
+  destination: !secret neilwork
+  units: imperial
+
+# sensor 6
+  # Tracking Work to Home
+- platform: google_travel_time
+  name: Neil Work to Home
+  api_key: !secret google_api
+  origin: !secret neilwork
+  destination: !secret home
+  units: imperial
+  
+ ###### New Waze Travel Sensors ##### 
+- platform: waze_travel_time
+  name: Neil Work to Home Waze
+  origin: !secret neilwork
+  destination: !secret home
+  region: 'EU'
+    
+# sensor 7
+  # Tracking Home to Work
+#- platform: google_travel_time
+ # name: Julie Home to Work
+ # api_key: !secret google_api
+ # origin: !secret home
+ # destination: !secret juliework
+ # units: imperial
+
+# sensor 8
+  # Tracking Work to Home
+#- platform: google_travel_time
+#  name: Julie Work to Home
+#  api_key: !secret google_api
+#  origin: !secret juliework
+#  destination: !secret home
+#  units: imperial
+
+# sensor 9
+- platform: nest
+  monitored_conditions:
+    - 'temperature'
+    - 'humidity'
+    - 'operation_mode'
+    - 'target'
+    
+
+# sensor 10
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(1)  }}'
+    
+    
+# sensor 11
+#- platform: dht
+#sensor: AM2302
+# pin: 23
+# name: Living Room
+# monitored_conditions:
+#  - temperature
+#  - humidity
+    
+# sensor 12
+- platform: mold_indicator
+  indoor_temp_sensor: sensor.mqtt_rf_temperature
+  indoor_humidity_sensor: sensor.mqtt_rf_humidity
+  outdoor_temp_sensor: sensor.dark_sky_temperature
+  calibration_factor: 1.225
+
+    
+# sensor 13
+- platform: systemmonitor
+  resources:
+    - type: last_boot
+    - type: since_last_boot
+    - type: processor_use
+    - type: disk_use
+      arg: /home
+    - type: disk_free
+      arg: /home 
+    - type: memory_use
+    - type: memory_free
+    - type: memory_use_percent
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+  
+##### Round up system monitor loads #####  
+- platform: template
+  sensors:
+      load_1m:
+        friendly_name: 'Load (1m)'
+        value_template: "{{ states.sensor.load_1m_2.state | round(2) }}"
+        
+- platform: template
+  sensors:
+      load_5m:
+        friendly_name: 'Load (5m)'
+        value_template: "{{ states.sensor.load_5m_2.state | round(2) }}"
+ 
+- platform: template
+  sensors:
+      load_15m:
+        friendly_name: 'Load (15m)'
+        value_template: "{{ states.sensor.load_15m_2.state | round(2) }}"
+        
+- platform: template
+  sensors:
+      since_last_boot_templated:
+        value_template: >-
+          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+          {%- set count = slb | length -%}
+          {%- set hms = slb[count - 1] -%}
+          {%- set hms_trimmed = hms.split('.')[0] -%}
+          {%- set hms_split = hms_trimmed.split(':') -%}
+          {%- set hours = hms_split[0] | int -%}
+          {%- set minutes = hms_split[1] | int -%}
+
+          {%- if count == 3 -%}
+            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+          {%- endif -%}
+          {%- if minutes > 0 -%}
+            {%- if hours > 0 -%}
+               {{ ', ' }}
+            {%- endif -%}
+            {%- if minutes == 1 -%}
+              1 minute
+            {%- else -%}
+              {{ minutes }} minutes
+            {%- endif -%}
+          {%- endif -%}
+          
+# sensor 14
+- platform: statistics
+  entity_id: sensor.energy_cost
+#- platform: statistics
+ # entity_id: sensor.energy_usage giving error. 8 March 2018
+    
+# sensor 15
+- platform: fitbit
+  monitored_resources:
+    - "activities/distance"
+    - "activities/minutesFairlyActive"
+    - "activities/minutesLightlyActive"
+    - "activities/minutesSedentary"
+    - "activities/minutesVeryActive"
+    - "activities/steps"
+    - "devices/battery"
+    - "sleep/efficiency"
+    
+##########################
+# Strava - Last ride     #
+##########################
+- platform: rest
+  name: Distance
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].distance | multiply(0.000621371) | round(1) }}'
+  unit_of_measurement: Miles
+  scan_interval: 300
+- platform: rest
+  name: Elevation Gain
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].total_elevation_gain | multiply(3.2808399) | round(1) }}'
+  unit_of_measurement: Ft
+  scan_interval: 300
+- platform: rest
+  name: Average Speed
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].average_speed | multiply(2.236936) | round(1) }}'
+  unit_of_measurement: MPH
+  scan_interval: 300
+- platform: rest
+  name: Average Watts
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].average_watts | round(0) }}'
+  unit_of_measurement: Watts
+  scan_interval: 300
+- platform: rest
+  name: Calories
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].kilojoules | multiply(1.1140) | round(1) }}'
+  unit_of_measurement: KCal
+  scan_interval: 300
+- platform: rest
+  name: Achievements
+  resource: https://www.strava.com/api/v3/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].achievement_count | round(0) }}'
+  scan_interval: 300
+- platform: rest
+  name: Last Ride Date
+  resource: https://www.strava.com/api/v3/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].start_date_local }}'
+  scan_interval: 300
+- platform: rest
+  name: Time Duration
+  resource: https://www.strava.com/api/v3/athlete/activities
+  method: GET
+  headers:
+    Authorization: !secret strava
+  value_template: '{{ value_json[0].elapsed_time | multiply(0.016666667) | round(0) }}'
+  unit_of_measurement: Minutes
+  scan_interval: 300
+
+
+  
+# sensor 16
+- platform: moon
+  
+
+# sensor 17
+- platform: command_line
+  name: SSL Cert Expiry
+  unit_of_measurement: days
+  scan_interval: 86400
+  command: !secret ssl 
+  
+- platform: cert_expiry
+  host: !secret ssl2
+  port: 8123
+
+
+- platform: command_line
+  name: "HA Uptime"
+  command: echo "$(($(date +%s) - $(date -d "$(head -n1 /home/hass/.homeassistant/home-assistant.log | cut -d' ' -f-2)" +%s)))"
+  scan_interval: 60
+  value_template: >-
+    {% set uptime = value | int %}
+    {% set seconds = uptime % 60 %}
+    {% set minutes = ((uptime % 3600) / 60) | int %}
+    {% set hours = ((uptime % 86400) / 3600) | int %}
+    {% set days = (uptime / 86400) | int %}
+    {%- if days > 0 -%}
+      {%- if days == 1 -%}
+        1 day
+      {%- else -%}
+        {{ days }} days
+      {%- endif -%}
+      {{ ', ' }}
+    {%- endif -%}
+    {{ '%02d' % hours }}:{{ '%02d' % minutes }}  
+
+- platform: rest
+  resource: http://ip.jsontest.com
+  name: wan_ip
+  value_template: '{{ value_json.ip }}'
+    
+- platform: rest
+  resource: https://pypi.python.org/pypi/homeassistant/json
+  name: HA Current Version
+  value_template: '{{ value_json.info.version }}'
+  scan_interval: 3600
+
+- platform: template
+  sensors:
+      obihai:
+        friendly_name: 'ObiHai'
+        value_template: "{{ 'Online' if is_state('device_tracker.obihai', 'home') else 'Off-line' }}"
+
+      alex_pc:
+        friendly_name: 'Alex PC'
+        value_template: "{{ 'Online' if is_state('device_tracker.alex_pc', 'home') else 'Off-line' }}"
+
+      nest:
+        friendly_name: 'Nest'
+        value_template: "{{ 'Online' if is_state('device_tracker.nest', 'home') else 'Off-line' }}"
+
+      roku:
+        friendly_name: 'Roku'
+        value_template: "{{ 'Online' if is_state('device_tracker.roku', 'home') else 'Off-line' }}"
+
+      hummy:
+        friendly_name: 'Hummy'
+        value_template: "{{ 'Online' if is_state('device_tracker.hummy', 'home') else 'Off-line' }}"
+
+      ps4:
+        friendly_name: 'PS4'
+        value_template: "{{ 'Online' if is_state('device_tracker.[s4', 'home') else 'Off-line' }}"
+
+      alexa:
+        friendly_name: 'Alexa'
+        value_template: "{{ 'Online' if is_state('device_tracker.alexa', 'home') else 'Off-line' }}"
+
+      chromecast:
+        friendly_name: 'ChromeCast'
+        value_template: "{{ 'Online' if is_state('device_tracker.chromecast', 'home') else 'Off-line' }}"
+        
+      efergy:
+        friendly_name: 'Efergy'
+        value_template: "{{ 'Online' if is_state('device_tracker.efergy', 'home') else 'Off-line' }}"
+
+      readynas:
+        friendly_name: 'ReadyNAS'
+        value_template: "{{ 'Online' if is_state('device_tracker.readynas', 'home') else 'Off-line' }}"
+        
+      nodemcu:
+        friendly_name: 'NodeMCU'
+        value_template: "{{ 'Online' if is_state('device_tracker.nodemcu', 'home') else 'Off-line' }}"
+        
+      sonoff:
+        friendly_name: 'Sonoff'
+        value_template: "{{ 'Online' if is_state('device_tracker.sonoff', 'home') else 'Off-line' }}"
+        
+      mqtt_rf: 
+        friendly_name: 'MQTT RF'
+        value_template: "{{ 'Online' if is_state('device_tracker.mqtt_rf', 'home') else 'Off-line' }}"
+
+      bedroom_wemos:
+        friendly_name: 'Bedroom Wemos'
+        value_template: "{{ 'Online' if is_state('group.bedroom_wemos', 'home') else 'Off-line' }}"
+        
+      garage_sensor:
+        friendly_name: 'Garage Sensor'
+        value_template: "{{ 'Online' if is_state('device_tracker.garage_sensor', 'home') else 'Off-line' }}"
+
+      hallway_sensor:
+        friendly_name: 'Hallway Sensor'
+        value_template: "{{ 'Online' if is_state('device_tracker.hallway_sensor', 'home') else 'Off-line' }}"
+                        
+      utility_room_sensor:
+        friendly_name: 'Utility Room Sensor'
+        value_template: "{{ 'Online' if is_state('device_tracker.utility_room_sensor', 'home') else 'Off-line' }}"
+        
+      retropie:
+        friendly_name: 'RetroPie'
+        value_template: "{{ 'Online' if is_state('device_tracker.retropie', 'home') else 'Off-line' }}"
+        
+      boiler_wemos:
+        friendly_name: 'Boiler Wemos'
+        value_template: "{{ 'Online' if is_state('device_tracker.boiler_wemos', 'home') else 'Off-line' }}"
+        
+      hot_water_wemos:
+        friendly_name: 'Hot Water Wemos'
+        value_template: "{{ 'Online' if is_state('device_tracker.hot_water_wemos', 'home') else 'Off-line' }}"
+
+      bme280_pir:
+        friendly_name: 'BME280 PIR'
+        value_template: "{{ 'Motion Detected' if is_state('sensor.bme_pir', '1') else 'Standby' }}"
+
+
+      fitbitdistance:
+        value_template: '{{ states.sensor.distance_2.state | multiply(0.6214) | round(2) }}' # sensor distance being used by Strava
+        friendly_name: 'Fitbit Distance'
+        unit_of_measurement: 'miles'
+        
+      air_quality:
+        friendly_name: 'Air Quality'
+        value_template: "{%- if states.sensor.waqi_southampton_centre_united_kingdom.state | float < 51 %}
+Good
+{% elif states.sensor.waqi_southampton_centre_united_kingdom.state | float < 101 %}
+Moderate
+{% elif states.sensor.waqi_southampton_centre_united_kingdom.state | float < 151 %}
+Unhealthy for Sensitive Groups
+{% elif states.sensor.waqi_southampton_centre_united_kingdom.state | float < 201 %}
+Unhealthy
+{% elif states.sensor.waqi_southampton_centre_united_kingdom.state | float < 301 %}
+Very unhealthy
+{% elif states.sensor.waqi_southampton_centre_united_kingdom.state | float > 300 %}
+Hazardous
+{% else %}
+Unknown
+{%- endif %}"
+
+        
+        
+- platform: mqtt  
+  state_topic: "conservatory"  
+  name: "Conservatory Humidity"  
+  unit_of_measurement: "%"  
+  value_template: '{{ value_json.humidity | round(1) }}'  
+ 
+- platform: mqtt  
+  state_topic: "conservatory"  
+  name: "Conservatory Temperature"  
+  unit_of_measurement: "°C"  
+  value_template: '{{value_json.temperature | multiply(0.89) | round(1) }}'
+ 
+- platform: mqtt  
+  state_topic: "conservatory"  
+  name: "Conservatory LDR"
+  ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
+  unit_of_measurement: "lx"  
+  value_template: '{{ value_json.ldr }}'  
+   
+- platform: mqtt  
+  state_topic: "conservatory"  
+  name: "Conservatory PIR"  
+  value_template: '{{ value_json.motion }}'  
+  
+- platform: mqtt  
+  state_topic: "/Bedroom/SHT30/Temperature"  
+  name: "Bedroom Temperature"  
+  unit_of_measurement: "°C"  
+  # value_template: '{{ value_json.temperature | multiply(0.96) | round(1) }}'  
+  ## was 0.95 multiply
+  
+- platform: mqtt  
+  state_topic: "/Bedroom/WiFi RSSI/dBm"  
+  name: "Bedroom WiFi RSSI"  
+  unit_of_measurement: "dBm" 
+  
+- platform: mqtt  
+  state_topic: "/Bedroom/SHT30/Humidity"  
+  name: "Bedroom Humidity"  
+  unit_of_measurement: "%"  
+  # value_template: '{{ value_json.humidity | round(1) }}'
+   
+- platform: mqtt  
+  state_topic: "hallway" 
+  name: "Hallway PIR"  
+  value_template: '{{ value_json.motion }}'
+  
+- platform: mqtt  
+  state_topic: "hallway"  
+  name: "Hallway Temperature"  
+  unit_of_measurement: "°C"  
+  value_template: '{{ value_json.temperature | round(1) }}'  
+  
+- platform: mqtt  
+  state_topic: "hallway"  
+  name: "Hallway Humidity"  
+  unit_of_measurement: "%"  
+  value_template: '{{ value_json.humidity | round(1) }}'
+  
+- platform: mqtt  
+  state_topic: "utility" 
+  name: "Utility Room PIR"  
+  value_template: '{{ value_json.motion }}'
+  
+#- platform: mqtt  
+#  state_topic: "utility"  
+#  name: "Utility Room Temperature"  
+#  unit_of_measurement: "°C"  
+#  value_template: '{{ value_json.temperature | round(1) }}'  
+  
+#- platform: mqtt  
+#  state_topic: "utility"  
+#  name: "Utility Room Humidity"  
+#  unit_of_measurement: "%"  
+#  value_template: '{{ value_json.humidity | round(1) }}'
+
+
+- platform: mqtt
+  name: "Sonoff Temperature"
+  state_topic: "tele/sonoff1/SENSOR"
+  value_template: "{{ value_json['AM2301'].Temperature }}"
+  unit_of_measurement: "°C"
+
+- platform: mqtt
+  name: "Sonoff Humidity"
+  state_topic: "tele/sonoff1/SENSOR"
+  value_template: "{{ value_json['AM2301'].Humidity }}"
+  unit_of_measurement: "%"  
+  
+- platform: mqtt
+  name: "MQTT RF Temperature"
+  state_topic: "home/DHTtoMQTT/dht1/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | round(1)  }}'
+
+- platform: mqtt
+  name: "MQTT RF Humidity"
+  state_topic: "home/DHTtoMQTT/dht1/hum"
+  unit_of_measurement: "%"
+  value_template: '{{value | multiply(0.82) | round(1) }}'
+
+- platform: mqtt  
+  state_topic: "/esp01/tempfeed/Temperature"  
+  name: "Feed Temperature"  
+  unit_of_measurement: "°C"  
+  
+- platform: mqtt  
+  state_topic: "/esp01/Kitchen/Temperature"  
+  name: "Kitchen Temperature"  
+  unit_of_measurement: "°C"  
+  
+- platform: mqtt  
+  state_topic: "/esp01/tempreturn/Temperature"  
+  name: "Return Temperature"  
+  unit_of_measurement: "°C"  
+  
+- platform: mqtt  
+  state_topic: "/esp01/Uptime/Hours" 
+  name: "Boiler Uptime" 
+  unit_of_measurement: "Hours" 
+  
+- platform: mqtt  
+  state_topic: "/esp01/wifi_power/dBm"  
+  name: "Boiler WiFi RSSI"  
+  unit_of_measurement: "dBm" 
+  
+- platform: mqtt  
+  state_topic: "/esp02/Water Temperature/Water Temperature"  
+  name: "Water Temperature"  
+  unit_of_measurement: "°C"  
+  
+- platform: mqtt  
+  state_topic: "/esp02/Uptime/Hours" 
+  name: "Hot Water Uptime" 
+  unit_of_measurement: "Hours" 
+  
+- platform: mqtt  
+  state_topic: "/esp02/wifi_power/dBm"  
+  name: "Hot Water WiFi RSSI"  
+  unit_of_measurement: "dBm" 
+  
+- platform: mqtt  
+  state_topic: "SHT30/temperature"  
+  name: "SHT30 Temperature"  
+  unit_of_measurement: "°C"  
+  
+- platform: mqtt  
+  state_topic: "SHT30/humidity"  
+  name: "SHT30 Humidity"  
+  unit_of_measurement: "%"  
+
+- platform: mqtt  
+  state_topic: "SHT30/voltage"  
+  name: "SHT30 Voltage"  
+  unit_of_measurement: "V" 
+  
+- platform: mqtt  
+  state_topic: "/BME280/Climate/Temperature"  
+  name: "BME Temperature"  
+  unit_of_measurement: "°C"  
+  value_template: '{{value | multiply(0.75) | round(1) }}'
+  
+- platform: mqtt  
+  state_topic: "/BME280/Climate/Humidity"  
+  name: "BME Humidity"  
+  unit_of_measurement: "%"  
+
+- platform: mqtt  
+  state_topic: "/BME280/Climate/Pressure"  
+  name: "BME Pressure"  
+  unit_of_measurement: "mb" 
+
+- platform: mqtt  
+  state_topic: "/BME280/PIR/PIR"  
+  name: "BME PIR" 
+  icon: mdi:run 
+  #value_template: '1' 
+  
+- platform: mqtt  
+  state_topic: "frontdoor"  
+  name: "Garage Humidity"  
+  unit_of_measurement: "%"  
+  value_template: '{{ value_json.humidity | round(1) }}'  
+ 
+- platform: mqtt  
+  state_topic: "frontdoor"  
+  name: "Garage Temperature"  
+  unit_of_measurement: "°C"  
+  value_template: '{{value_json.temperature | multiply(0.86) | round(1) }}'
+  
+ 
+- platform: mqtt  
+  state_topic: "frontdoor"  
+  name: "Front Door PIR"  
+  value_template: '{{ value_json.motion }}' 
+
+- platform: uptime
+
+- platform: waqi
+  token: !secret waqi
+  locations:
+    - Southampton
+
+
+-  platform: airvisual
+   api_key: !secret airvisual
+   monitored_conditions:
+     - us
+     
+   #city: southampton
+   #state: hampshire
+   #country: uk  
+   latitude: 50.9202178
+   longitude: -1.4633123
+   radius: 100
+    
+- platform: rest
+  name: dns_queries_today
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.dns_queries_today }}'
+  
+- platform: rest
+  name: domains_being_blocked
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.domains_being_blocked }}'
+  
+- platform: rest
+  name: ads_blocked_today
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.ads_blocked_today }}'
+  
+- platform: rest
+  name: ads_percentage_today
+  resource: !secret pi_hole_url
+  value_template: '{{ "%0.2f" % (value_json.ads_percentage_today |float) }}'
+
+- platform: rest
+  name: unique_domains
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.unique_domains }}'
+    
+- platform: rest
+  name: queries_forwarded
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.queries_forwarded }}'
+    
+- platform: rest
+  name: queries_cached
+  resource: !secret pi_hole_url
+  value_template: '{{ value_json.queries_cached }}'
+  
+- platform: template
+  sensors:  
+      nextsunrise:
+        friendly_name: 'Sunrise'
+        value_template: '{{ as_timestamp(states.sun.sun.attributes.next_rising) | timestamp_custom("%T %Z") }}'
+
+- platform: template
+  sensors:
+       nextsunset:
+         friendly_name: 'Sunset'
+         value_template: '{{ as_timestamp(states.sun.sun.attributes.next_setting) | timestamp_custom("%T %Z") }}'
+  
+- platform: template
+  sensors:  
+      dayofyear:
+        friendly_name: 'Day Number'
+        value_template: '{{ now().strftime("%j") }}'
+
+- platform: template
+  sensors:
+    weekofyear:
+        friendly_name: 'Week Number'
+        value_template: '{{ now().strftime("%U") }}'
+ 
+- platform: time_date
+  display_options:
+       - 'time'
+       - 'date'
+       - 'time_utc'
+
+- platform: travisci
+  api_key: !secret travis
+  #repository: Hassio
+  #branch: master
+  monitored_conditions:
+   - last_build_id
+   - last_build_finished_at
+   - last_build_state
+   - state
+   - last_build_duration

@@ -1,0 +1,15 @@
+mdiindex:
+  title: MDI Icon Index
+  icon: mdi:vector-square
+  url: https://cdn.rawgit.com/james-fry/home-assistant-mdi/efd95d7a/home-assistant-mdi.html
+
+terminal:
+  title: Terminal
+  icon: mdi:console
+  url: https://bertrum.duckdns.org:7681/
+
+sonweb:
+    title: Sonoffs
+    icon: mdi:lightbulb-on
+    url: http://192.168.0.60:9541
+

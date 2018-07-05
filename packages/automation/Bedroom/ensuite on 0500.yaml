@@ -1,0 +1,20 @@
+  alias: Ensuite radiator on below 18 celsius 5am days
+  trigger:
+    platform: time
+    at: '05:00:00'
+  condition:
+    - condition: state
+      entity_id: group.family
+      state: home
+    - condition: state
+      entity_id: input_boolean.ensuite_radiator
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.home_to_work_days
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.sonoff_temperature
+      below: 18
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff1

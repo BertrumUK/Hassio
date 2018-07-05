@@ -1,0 +1,13 @@
+######### Water Temperature off 22:30 ############
+
+  alias: Water Temperature off 22:30
+  trigger:
+    platform: time
+    at: '22:30'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: switch.red
+  - service: homeassistant.turn_off
+    entity_id: switch.blue
+  - service: homeassistant.turn_off
+    entity_id: switch.green

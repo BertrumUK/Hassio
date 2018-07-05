@@ -1,0 +1,12 @@
+alias: "lights off"
+trigger:
+  platform: mqtt
+  topic: home/433toMQTT
+  payload: 5578551
+action:
+ - service: homeassistant.turn_off
+   entity_id: light.led_strip
+ - service: homeassistant.turn_off
+   entity_id: group.lights
+ #- service: homeassistant.turn_on
+   #entity_id: switch.lights

@@ -1,0 +1,9 @@
+  alias: "Keep Sonoff Input Select Updated"
+  trigger:
+    platform: mqtt
+    topic: stat/sonoff1/POWER
+  action:
+    service: input_select.select_option
+    entity_id: input_select.sonoff1_set
+    data_template:
+        option: '{{states("switch.sonoff1_POWER")|round(0)}}'

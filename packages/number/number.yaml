@@ -1,0 +1,6 @@
+led_animation_speed:
+  name: LED Speed
+  initial: 50
+  min: 1
+  max: 100
+  step: 10

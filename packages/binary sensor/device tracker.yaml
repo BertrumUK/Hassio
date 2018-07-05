@@ -1,0 +1,21 @@
+  platform: device_tracker_sensor
+  entities:
+    - device_tracker.retropie
+    - device_tracker.yicam_front_door
+    - device_tracker.yicam_garden
+    - device_tracker.boiler_wemos
+    - device_tracker.hot_water_wemos
+    - device_tracker.nodemcu
+    - device_tracker.mqtt_rf
+    - group.bedroom_wemos
+    - device_tracker.sonoff
+    - device_tracker.hallway_sensor
+    - device_tracker.utility_room_sensor
+    - device_tracker.garage_sensor
+    - device_tracker.chromecast
+    - device_tracker.hummy
+    - device_tracker.obihai
+    - device_tracker.nest
+    - device_tracker.roku
+    - device_tracker.alex_pc
+    - device_tracker.readynas

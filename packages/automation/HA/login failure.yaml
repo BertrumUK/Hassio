@@ -1,0 +1,16 @@
+##### Login Attempt Failure #####
+  alias: "Send notification upon failed login attempt"
+  trigger:
+    - platform: state
+      entity_id: persistent_notification.httplogin
+  condition:
+    - condition: template
+      value_template: "{{ trigger.to_state.state != None }}"
+  action:
+    - service: notify.ios_neil
+      data_template:
+        title: "Failed login!"
+        message: "{{ trigger.to_state.state }}"
+        data:
+          push:
+            sound: "US-EN-Alexa-Back-Door-Opened.wav"

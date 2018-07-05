@@ -1,0 +1,16 @@
+alias: 'Water Temp Cold'
+trigger:
+  platform: numeric_state
+  entity_id: sensor.water_temperature
+  below: 40
+condition:
+  condition: time
+  after: '06:30'
+  before: '22:30'
+action:
+- service: homeassistant.turn_off
+  entity_id: switch.red
+- service: homeassistant.turn_off
+  entity_id: switch.green
+- service: homeassistant.turn_on
+  entity_id: switch.blue

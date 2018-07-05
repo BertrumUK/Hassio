@@ -1,0 +1,7 @@
+  alias: Ensuite Power Retain
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.sonoff_power_retain

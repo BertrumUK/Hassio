@@ -1,0 +1,8 @@
+alias: "front_doorbell_pressed"
+trigger:
+  platform: mqtt
+  topic: home/433toMQTT
+  payload: 9112152
+action:
+ - service: homeassistant.turn_on
+   entity_id: input_boolean.front_doorbell

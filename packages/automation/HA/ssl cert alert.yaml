@@ -1,0 +1,10 @@
+  alias: 'SSL renew warning'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ssl_cert_expiry
+    below: 30
+  action:
+    service: notify.ios_neil
+    data:
+      title: "Time to renew Lets Encrypt"
+      message: "Lets Encrypt runs out in {{ states.sensor.ssl_cert_expiry.state }} Days"

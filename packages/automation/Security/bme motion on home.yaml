@@ -1,0 +1,17 @@
+  alias: BME Trigger LED On - Home
+  trigger:
+    platform: state
+    entity_id: sensor.bme_pir
+    from: '0'
+    to: '1'
+  condition:
+   - condition: state
+     entity_id: group.family
+     state: home
+  action:
+  - service: switch.turn_on
+    entity_id: switch.bmegreen
+  - delay: '00:00:05'
+  - service: switch.turn_off
+    entity_id: switch.bmegreen
+
