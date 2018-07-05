@@ -8,7 +8,7 @@
   </h4>
 </div>
 
-Running Hassio on a Raspberry Pi 3 (moved from Hassbian June 2018) with all physical connections moved off the Pi onto multiple NodeMCU's and even more Wemos D1 Mini's. Using the Open MQTT RF/IR code [Link](https://github.com/1technophile/OpenMQTTGateway) to provide 433meg RF,IR to my digibox and room temperature/humidity - thanks Florian :)
+Running Hassio on a Raspberry Pi 3 (moved from Hassbian June 2018) with all physical connections moved off the Pi onto multiple NodeMCU's and even more Wemos D1 Mini's. Using the Open MQTT RF/IR code [Here](https://github.com/1technophile/OpenMQTTGateway) to provide 433meg RF,IR to my digibox and room temperature/humidity - thanks Florian :)
 
 Have multiple RF 433Mhz sockets controlling lights and bedroom fan. Sonoff's now controlling the living room lights. Modified Sonoff with a temperature sensor controls an electric radiator in our ensuite depending on current temperature and time of day.
 
