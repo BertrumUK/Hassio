@@ -4,7 +4,7 @@
   <h4>
   <div align="center">
   <a href="https://travis-ci.org/BertrumUK/Hassio#"><img src="https://travis-ci.org/BertrumUK/Hassio.svg?branch=master"/></a>
-  <a href="https://github.com/BertrumUK/Hassio/commits/Master"><img src="https://img.shields.io/github/last-commit/BertrumUK/Hassio.svg?style=plasticr"/></a>
+  <a href="https://github.com/BertrumUK/Hassio/commits/master"><img src="https://img.shields.io/github/last-commit/BertrumUK/Hassio.svg?style=plasticr"/></a>
   </h4>
 </div>
 
