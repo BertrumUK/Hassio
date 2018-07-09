@@ -23,6 +23,7 @@ Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/hom
 
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/main%20page.png)
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/household.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/security.png)
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/travel.png)
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/weather.png)
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/automations.png)
