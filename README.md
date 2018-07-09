@@ -21,12 +21,12 @@ An old Android phone running IP Webcam provides a camera feed of the front of th
 Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/home-assistant).
 
 
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/main%20page.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/travel.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/weather.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/automations.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/network.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/devices.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/fitbit.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/media%20devices.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/tv%20remote.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/main%20page.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/travel.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/weather.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/automations.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/network.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/devices.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/fitbit.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/media%20devices.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/tv%20remote.png)
