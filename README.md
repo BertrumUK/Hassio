@@ -18,7 +18,7 @@ Have Nest Thermostat in the hallway also pulling in the hallway temps. Amazon Ec
 
 An old Android phone running IP Webcam provides a camera feed of the front of the house.
 
-Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/home-assistant).
+Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/Hassio).
 
 
 ![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/main%20page.png)
