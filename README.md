@@ -18,15 +18,17 @@ Have Nest Thermostat in the hallway also pulling in the hallway temps. Amazon Ec
 
 An old Android phone running IP Webcam provides a camera feed of the front of the house.
 
-Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/home-assistant).
+Configuration files now tested with [Travis](https://travis-ci.org/BertrumUK/Hassio).
 
 
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/main%20page.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/travel.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/weather.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/automations.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/network.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/devices.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/fitbit.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/media%20devices.png)
-![Screenshot of Home View](https://github.com/BertrumUK/home-assistant/blob/Master2/Screenshots/tv%20remote.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/main%20page.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/household.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/security.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/travel.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/weather.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/automations.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/network.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/devices.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/fitbit.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/media%20devices.png)
+![Screenshot of Home View](https://github.com/BertrumUK/Hassio/blob/master/Screenshots/tv%20remote.png)
