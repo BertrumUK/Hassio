@@ -1,0 +1,30 @@
+{
+    "data": {
+        "entries": [
+            {
+                "data": {
+                    "impl_domain": "nest",
+                    "tokens": {
+                        "access_token": "c.5qkUpzKNFRwxbayoDf0IMDLemzhamEHo8aLANVJw0AeqJKQel2jQF66ETSJN9AlMYczRzG8IpJMfHNfBLPzTBJgNmcYxWEFmFEkUG86NJaeIcKL8THhiUJg6IbKYy7gIgPedbp8QrD1LypCx",
+                        "expires_in": 315360000
+                    }
+                },
+                "domain": "nest",
+                "entry_id": "e7e5cbadf77146ff894779cd677c5ab5",
+                "source": "import",
+                "title": "Nest (import from configuration.yaml)",
+                "version": 1
+            },
+            {
+                "data": {},
+                "domain": "cast",
+                "entry_id": "b9a499960b7b4eb8b8226d0e47a050be",
+                "source": "discovery",
+                "title": "Google Cast",
+                "version": 1
+            }
+        ]
+    },
+    "key": "core.config_entries",
+    "version": 1
+}
