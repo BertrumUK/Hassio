@@ -6,7 +6,7 @@ mdiindex:
 terminal:
   title: Terminal
   icon: mdi:console
-  url: https://bertrum.duckdns.org:7681/
+  url: !secret terminal
 
 #sonweb:
     #title: Sonoffs
