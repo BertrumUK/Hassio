@@ -8,8 +8,8 @@ terminal:
   icon: mdi:console
   url: https://bertrum.duckdns.org:7681/
 
-sonweb:
-    title: Sonoffs
-    icon: mdi:lightbulb-on
-    url: http://192.168.0.60:9541
+#sonweb:
+    #title: Sonoffs
+    #icon: mdi:lightbulb-on
+    #url: http://192.168.0.60:9541
 
