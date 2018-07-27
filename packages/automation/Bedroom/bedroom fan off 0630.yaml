@@ -1,7 +1,7 @@
-  alias: Bedroom Fan off 06:30
+  alias: Bedroom Fan off 03:00
   trigger:
     platform: time
-    at: '06:30:00'
+    at: '03:00:00'
   condition:
     - condition: state
       entity_id: group.family

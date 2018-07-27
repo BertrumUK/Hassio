@@ -284,7 +284,7 @@
     - automation.bedroom_fan_off_2300
     - automation.bedroom_fan_off_0000
     - automation.bedroom_fan_off_0100
-    - automation.bedroom_fan_off_0630
+    - automation.bedroom_fan_off_0300
 
   Home Assistant:
     - automation.broadband_drop
@@ -310,6 +310,15 @@
     - sensor.mold_indicator
     - light.led_strip
     - input_number.led_animation_speed
+
+  Dash:
+    - light.led_strip
+    - switch.lights
+    - switch.tv
+    - switch.humax_power
+    - switch.fireplace
+    #- switch.christmas_lights
+    - sensor.mqtt_rf_temperature
   
   Bedroom:
     - sensor.bedroom_temperature
@@ -498,6 +507,7 @@
     - sensor.hot_water_wifi_rssi
     
   Water:
+    - sensor.water_temperature
     - switch.red
     - switch.green
     - switch.blue

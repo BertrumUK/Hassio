@@ -157,7 +157,7 @@
        icon: mdi:fan
     automation.bedroom_fan_off_0100:
        icon: mdi:fan
-    automation.bedroom_fan_off_0630:
+    automation.bedroom_fan_off_0300:
        icon: mdi:fan
     switch.christmas_lights:
        icon: mdi:pine-tree
